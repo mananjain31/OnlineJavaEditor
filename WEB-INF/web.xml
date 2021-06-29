@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>	
+	<servlet>
+		<servlet-name>execute</servlet-name>
+		<servlet-class>controller.Execute</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>execute</servlet-name>
+		<url-pattern>/execute</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>startSession</servlet-name>
+		<servlet-class>controller.StartSession</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>startSession</servlet-name>
+		<url-pattern>/startSession</url-pattern>
+	</servlet-mapping>
+
+</web-app>

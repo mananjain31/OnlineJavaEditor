@@ -1,8 +1,12 @@
+import java.util.*;
+
 class Code
 {
 public static void main(String...args)
 {
-System.out.println("Hey Coder, hi");
+Scanner sc = new Scanner(System.in);
+System.out.println(sc.nextInt());
+System.out.println("Hey Coder");
 }
 }
 class inputTaker{public static void main(String...args) throws Exception{
