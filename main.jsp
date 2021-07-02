@@ -15,7 +15,7 @@
   if(code==null) code = "class MyCode\n"+"{\n"+"public static void main(String...args)\n"+"{\n"+"System.out.println(\"Hey There Coder\");\n"+"}\n"+"}\n";
   if(inputText == null) inputText = "";
   if(outputText == null) outputText = "";
-  userName = "manan";
+  // userName = "manan";
 %>
 <html>
   <head>
