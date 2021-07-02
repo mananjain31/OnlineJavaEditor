@@ -2,20 +2,20 @@
 <%@page import="java.util.*"%>
 <%@page import="model.*"%>
 <%!
-    String currFile,code,className,inputText,outputText;
-    int curr_id;
+    String currFile,code,inputText,outputText,userName,userId;
 %>
 <%
-  if(code==null) code = "class MyCode\n"+
-                        "{\n"+
-                        "public static void main(String...args)\n"+
-                        "{\n"+
-                        "System.out.println(\"Hey There Coder\");\n"+
-                        "}\n"+
-                        "}\n";
+  session = request.getSession(false);
+  if(session != null) userName = (String) session.getAttribute("userName");
+  if(session != null) userId = (String) session.getAttribute("userId");
+
+  if(userName == null) userName = null;
+  if(userName == null) userId = null;
   if(currFile == null) currFile = "MyCode.java";
+  if(code==null) code = "class MyCode\n"+"{\n"+"public static void main(String...args)\n"+"{\n"+"System.out.println(\"Hey There Coder\");\n"+"}\n"+"}\n";
   if(inputText == null) inputText = "";
   if(outputText == null) outputText = "";
+  userName = "manan";
 %>
 <html>
   <head>
@@ -32,12 +32,40 @@
             <nav>
                 <div class="currFileDiv" value="" name="files">
                     <input type="text" name="currFile" class="currFile" value="<%=currFile%>">
+                    <a onclick="copyText('code')"><i class="far fa-copy white"></i></a>
+                    <a onclick="uploadFile('code')" ><i class="fas fa-upload white"></i></a>
+                    <a onclick="downloadFile('code')" ><i class="fas fa-download white"></i></a>
+                    <%
+                    if(userName!=null)
+                    {
+                    %>
+                    <a onclick="saveFile('code')" class="white"> <i class="fas fa-save" ></i></a>
+                    <%
+                    }
+                    %>
                 </div>
                 <div class="code-interactions">
                     <input type="button" value="New" name="New" class="btn" id="New" onclick="newF()">
                     <input type="button" value="Upload" name="Upload" class="btn Upload" id="Upload" onclick="newF()">
-                    <input type="button" value="Execute" name="submitB" class="btn execute" onclick="execute()">
-                    <input type="button" value="Login" name="LoginB" class="btn-inverted">
+                    <input type="button" value="Execute" name="submit" class="btn execute" onclick="execute()">
+                    <%
+                    if(userName == null)
+                    {
+                    %>
+                    <input type="button" value="Login" name="Login" class="btn-inverted">
+                    <%
+                    }
+                    else
+                    {
+                    %>
+                    <select class="btn-inverted" id="user" class="user" onchange="userOptionChanged(this)">
+                        <option id="userName" style="display:none">manan</option>
+                        <option id="Logout">Logout</option>
+                        <option id="openSaved">Open</option>
+                    </select>
+                    <%
+                    }
+                    %>
                 </div>
             </nav>
             
@@ -50,19 +78,24 @@
         <div class="ipop">
             <div class="ioNav">
                 <div class="ioNavTitle">Input</div>
-                <a><i class="fas fa-copy"></i></a>
-                <a><i class="fas fa-upload"></i></a>
+                <a onclick="copyText('input')"><i class="fas fa-copy"></i></a>
+                <a onclick="uploadFile('input')" ><i class="fas fa-upload"></i></a>
             </div>
           <textarea name="inputText" class="ip" placeholder="Enter Input Here" wrap="off" spellcheck="false"><%=inputText%></textarea>
             <div class="ioNav">
                 <div class="ioNavTitle">Output</div>
-                <a><i class="fas fa-copy"></i></a>
+                <a onclick="copyText('output')"><i class="fas fa-copy"></i></a>
                 <a><i class="fas fa-download"></i></a>
             </div>
           <textarea name="outputText" class="op" placeholder="Output Will Be Displayed Here" readonly wrap="off" spellcheck="false"><%=outputText%></textarea>
         </div>
       </div>
      </main>
+    <!-- Hidden inputs resides here -->
+    <input type="file" name="inputFile" id="inputFile" style="display:none" onchange="uploadedInputFile()">
+    <input type="file" name="codeFile" id="codeFile" style="display:none" onchange="uploadedCodeFile()">
     </form>
+    <!-- Hidden Notification Bar -->
+    <div class="notification" id="notification" style="display:none;"></div>
   </body>
 </html>

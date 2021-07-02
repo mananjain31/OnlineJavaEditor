@@ -10,7 +10,6 @@ body
     min-height: 100vh;
     /*background: linear-gradient(40deg, tomato, brown);*/
      background:#1D2632; 
-
 }
 header
 {
@@ -33,6 +32,7 @@ nav
     justify-content: space-between;
     margin-bottom: 0rem;
 }
+.white{color: white; font-size: 1.2rem; padding-left: 0.5rem;}
 .code-interactions
 {
     display: flex;
@@ -150,4 +150,28 @@ textarea,.textarea
 textarea::placeholder
 {
     color: rgb(100, 100, 100);
+}
+.notification
+{
+    position: absolute;
+    color: white;
+    background: black;
+    border: solid white 5px;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 5rem;
+    font-family: cursive;
+    right: 45%;
+    animation: 1.5s noti;
+}
+@keyframes noti {
+    0%{
+        bottom: 0px;
+    }
+    50%{
+        bottom: 5%;
+    }
+    100%{
+        bottom: 0%;
+    }
 }
