@@ -7,18 +7,17 @@ import java.util.*;
 
 public class Execute extends HttpServlet
 {
-	static String executionPath = ".\\webapps\\OnlineJavaIDE\\IDE_Codes\\";
-	static File executionFolder = new File(executionPath);
-	static File inputTextFile = new File(executionPath+"inputText.txt");
-	static File codeFile = new File(executionPath+"Code.java");
-	static FileWriter fw;
-	static HttpSession session;
-	static String inputText,code,varArgs,currClass,outputText;
+	 String executionPath = ".\\webapps\\OnlineJavaIDE\\IDE_Codes\\";
+	 File executionFolder = new File(executionPath);
+	 File inputTextFile = new File(executionPath+"inputText.txt");
+	 File codeFile = new File(executionPath+"Code.java");
+	 FileWriter fw;
+	 HttpSession session;
+	 String inputText,code,varArgs,currClass,outputText;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		PrintWriter out = response.getWriter();
-		
 		inputText = request.getParameter("inputText");
 		code = request.getParameter("code");
 		varArgs = null;
@@ -34,7 +33,7 @@ public class Execute extends HttpServlet
 		deleteClassFiles();
 
 		request.setAttribute("outputText", outputText);
-		RequestDispatcher rd = request.getRequestDispatcher("index.html");
+		RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
 		rd.forward(request, response);
 		}
 		catch(Exception e)
@@ -43,7 +42,7 @@ public class Execute extends HttpServlet
 		}
 	}
 
-	static public boolean writeFiles() throws IOException
+	 public boolean writeFiles() throws IOException
 	{
 		if(inputText == null) inputText = "";
 		fw = new FileWriter(inputTextFile);
@@ -54,7 +53,7 @@ public class Execute extends HttpServlet
 		fw.write(""
          + "\nclass inputTaker"
          + "{"
-         + "public static void main(String...args) throws Exception"
+         + "public  void main(String...args) throws Exception"
          + "{"
          + "\ntry{System.setIn(new java.io.FileInputStream(\"inputFile.txt\"));}catch(Exception e){}"
          + "\n"+currClass+".main("+varArgs+");"
@@ -66,7 +65,7 @@ public class Execute extends HttpServlet
 		return true;
 	}
 
-	static public String getOutput()throws Exception
+	 public String getOutput()throws Exception
 	{
 		String output = null;
 
@@ -94,7 +93,7 @@ public class Execute extends HttpServlet
 	}
 
 
-	static public StringBuilder printLines(InputStream is/*, JspWriter out*/) throws Exception 
+	 public StringBuilder printLines(InputStream is/*, JspWriter out*/) throws Exception 
 	{
 		StringBuilder lines = new StringBuilder();
 		Scanner sc = new Scanner(is);
@@ -106,7 +105,7 @@ public class Execute extends HttpServlet
 
 
 
-	public static void deleteClassFiles()
+	public  void deleteClassFiles()
 	{
 		File folder = executionFolder;
 	  	for(File file: folder.listFiles())

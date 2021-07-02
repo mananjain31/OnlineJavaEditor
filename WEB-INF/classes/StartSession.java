@@ -6,9 +6,9 @@ import java.io.*;
 import java.util.*;
 import model.*;
 
-class StartSession extends HttpServlet
+public class StartSession extends HttpServlet
 {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		//read files from DAO
 
@@ -16,19 +16,19 @@ class StartSession extends HttpServlet
 		List<TheClasses> theClasses = new ArrayList<>();
 		TheClasses theClass = new TheClasses();
 		theClass.id = 0;
-		theClass.className = "MyCode.java";
-		theClass.code = "class MyCode"+
-						"{"+
-						"public static void main(String...args)"+
-						"{"+
-						"System.out.println(\"Hey There Coder\");"+
-						"}"+
-						"}";
+		theClass.className = "MyCode";
+		theClass.code = "class MyCode\n"+
+						"{\n"+
+						"public static void main(String...args)\n"+
+						"{\n"+
+						"System.out.println(\"Hey There Coder\");\n"+
+						"}\n"+
+						"}\n";
 		theClasses.add(theClass);
 		HttpSession session = request.getSession();
 		session.setAttribute("theClasses", theClasses);
 		int curr_id = 0;
 		session.setAttribute("curr_id",curr_id);
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("main.jsp");
 	}
 }
