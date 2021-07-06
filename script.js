@@ -2,9 +2,10 @@ function onloadFunction()
 {}
 function execute()
 {
-  let mainform = document.getElementById("mainform");
+  var mainform = document.getElementById("mainform");
   mainform.action = "execute";
   mainform.target = "";
+  console.log(mainform);
   mainform.submit();
 }
 function resetF( )
@@ -39,6 +40,37 @@ function copyText(text)
       notification.style.display = "none";    
   },1500);
   console.log(notification);
+}
+function downloadFile(which)
+{
+
+  let mainform = document.getElementById("mainform");
+  let contentToDownload =  document.getElementById("contentToDownload")
+  let contentNameToDownload =  document.getElementById("contentNameToDownload")
+  contentNameToDownload.style.display = "flex";
+  contentToDownload.style.display = "flex";
+  switch(which)
+  {
+    case "code":
+    {
+      mainform.action = "download";
+      mainform.target = "_blank";
+      contentNameToDownload.value = document.getElementById("currFile").value;
+      contentToDownload.value = document.getElementById("code").value;
+      mainform.submit();
+    }break;
+
+    case "output":
+    {
+      mainform.action = "download";
+      mainform.target = "_blank";
+      contentNameToDownload.value = "output.txt";
+      contentToDownload.value = document.getElementById("outputText").value;
+      mainform.submit();
+    }break;
+  }
+  contentNameToDownload.style.display = "none";
+  contentToDownload.style.display = "none";
 }
 function uploadFile(whichFile)
 {

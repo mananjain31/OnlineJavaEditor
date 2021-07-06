@@ -1,12 +1,24 @@
-class MyCode
+import java.util.*;
+class Code
 {
 public static void main(String...args)
 {
-System.out.println("Hey There Coder");
+System.out.println("hola amigos!");
 }
 }
 
-class inputTaker{public  void main(String...args) throws Exception{
+class JimCode
+{
+public static void main(String...args)
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("hola amigosaa!");
+while(sc.hasNext())
+System.out.println(sc.nextInt()*100);
+}
+}
+
+class inputTaker{public static void main(String...args) throws Exception{
 try{System.setIn(new java.io.FileInputStream("inputFile.txt"));}catch(Exception e){}
-null.main(null);
+JimCode.main(null);
 }}
