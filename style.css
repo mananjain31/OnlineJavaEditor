@@ -203,3 +203,10 @@ textarea::placeholder
         bottom: 0%;
     }
 }
+
+/*.hidden-content{
+
+    display: flex;
+    width: 0;
+    height: 0;
+}*/

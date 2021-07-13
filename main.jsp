@@ -52,7 +52,7 @@
                 </div>
                 <div class="code-interactions">
                     <input type="button" value="New" name="New" class="btn" id="New" onclick="newF()">
-                    <input type="button" value="Upload" name="Upload" class="btn Upload" id="Upload" onclick="newF()">
+                    <!-- <input type="button" value="Upload" name="Upload" class="btn Upload" id="Upload" onclick="newF()"> -->
                     <input type="button" value="Execute" name="submitB" class="btn execute" onclick="execute()">
                     <%
                     if(userName == null)
@@ -97,8 +97,8 @@
         </div>
       </div>
     <!-- Hidden inputs resides here -->
-    <input type="file" name="inputFile" id="inputFile" style="display:none" onchange="uploadedInputFile()">
-    <input type="file" name="codeFile" id="codeFile" style="display:none" onchange="uploadedCodeFile()">
+    <input type="file" name="inputFile" id="inputFile" style="display:none" onchange="selectedFileToUpload(this)">
+    <input type="file" name="codeFile" id="codeFile" style="display:none" onchange="selectedFileToUpload(this)">
     <input type="text" name="contentNameToDownload" id="contentNameToDownload" style="display:none">
     <textarea name="contentToDownload" id="contentToDownload" style="display:none"></textarea>
     <!-- Hidden Notification Bar -->

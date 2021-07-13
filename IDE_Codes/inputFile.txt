@@ -1,3 +1,14 @@
-121
-90
-10000
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+class ServerDemo  extends HttpServlet
+{
+	public void doGet(HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException
+	{
+		PrintWriter out = res.getWriter();
+		out.println("<html><body>");
+		out.println("<h1>SWT Indore</h1>");
+		out.println("</body></html>");
+	}
+}

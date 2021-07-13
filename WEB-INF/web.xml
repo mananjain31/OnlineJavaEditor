@@ -28,4 +28,22 @@
 		<url-pattern>/download</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>uploadCodeFile</servlet-name>
+		<servlet-class>controller.UploadCodeFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadCodeFile</servlet-name>
+		<url-pattern>/uploadCodeFile</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>uploadInputFile</servlet-name>
+		<servlet-class>controller.UploadInputFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadInputFile</servlet-name>
+		<url-pattern>/uploadInputFile</url-pattern>
+	</servlet-mapping>
+
 </web-app>

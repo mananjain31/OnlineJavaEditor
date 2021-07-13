@@ -1,3 +1,3 @@
 <%
-    response.sendRedirect("startSession");
+    response.sendRedirect("main.jsp");
 %>

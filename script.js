@@ -49,6 +49,7 @@ function downloadFile(which)
   let contentNameToDownload =  document.getElementById("contentNameToDownload")
   contentNameToDownload.style.display = "flex";
   contentToDownload.style.display = "flex";
+  let target = mainform.target;
   switch(which)
   {
     case "code":
@@ -69,6 +70,7 @@ function downloadFile(which)
       mainform.submit();
     }break;
   }
+  mainform.target = target;
   contentNameToDownload.style.display = "none";
   contentToDownload.style.display = "none";
 }
@@ -79,19 +81,50 @@ function uploadFile(whichFile)
     case "input":
     {
       let inputFile = document.getElementById("inputFile");
+      inputFile.style.display = "flex";
+      inputFile.style.width = 0;
+      inputFile.style.height = 0;
       inputFile.click();
+      inputFile.style.display = "none";
     }break;
     case "code":
     {
       let codeFile = document.getElementById("codeFile");
+      codeFile.style.display = "flex"
+      codeFile.style.width = 0;
+      codeFile.style.height = 0
       codeFile.click();
+      codeFile.style.display = "none"
     }break;
   }
 }
-function uploadedInputFile()
+function selectedFileToUpload(tag)
 {
-  let inputFile = document.getElementById("inputFile");
-  //submitting code will be pasted below
+  console.log(tag);
+  let mainform = document.getElementById("mainform");
+  let enctype = mainform.enctype;
+  let target = mainform.target;
+  switch(tag.id)
+  {
+    case "codeFile":
+    {
+      mainform.target = "_blank";
+      mainform.action = "uploadCodeFile";
+      mainform.enctype="multipart/form-data";
+      // console.log(mainform.enctype);
+      mainform.submit();
+      mainform.enctype=enctype;
+      mainform.target = target;
+      // console.log(mainform.enctype);
+    }break;
+    case "inputFile":
+    {
+      mainform.action = "uploadInputFile";
+      mainform.enctype="multipart/form-data";
+      mainform.submit();  
+      mainform.enctype=enctype;
+    }break;
+  }
 }
 function userOptionChanged(option)
 {
