@@ -58,16 +58,16 @@
                     if(userName == null)
                     {
                     %>
-                    <input type="button" value="Login" name="Login" class="btn-inverted">
+                    <input type="button" value="Login" name="Login" class="btn-inverted" onclick = "login()">
                     <%
                     }
                     else
                     {
                     %>
                     <select class="btn-inverted" id="user" class="user" onchange="userOptionChanged(this)">
-                        <option id="userName" style="display:none">manan</option>
+                        <option id="userName" style="display:none"><%=userName%></option>
                         <option id="Logout">Logout</option>
-                        <option id="openSaved">Open</option>
+                        <option id="SavedCodes">Saved Codes</option>
                     </select>
                     <%
                     }
@@ -103,7 +103,7 @@
     <textarea name="contentToDownload" id="contentToDownload" style="display:none"></textarea>
     <!-- Hidden Notification Bar -->
     </form>
-    <div class="notification" id="notification" style="display:none;"></div>
+    <div class="notification" id="notification" style="display:none;"><%=(String)request.getAttribute("notification")%></div>
     </main>
   </body>
 </html>

@@ -5,7 +5,18 @@ function execute()
   var mainform = document.getElementById("mainform");
   mainform.action = "execute";
   mainform.target = "";
-  console.log(mainform);
+  mainform.submit();
+}
+function login()
+{
+  var mainform = document.getElementById("mainform");
+  mainform.action = "Login.jsp";
+  let target = mainform.target;
+  mainform.submit(); 
+}
+function saveFile()
+{
+  mainform.action="saveFile";
   mainform.submit();
 }
 function resetF( )
@@ -101,7 +112,6 @@ function uploadFile(whichFile)
 function selectedFileToUpload(tag)
 {
   console.log(tag);
-  let mainform = document.getElementById("mainform");
   let enctype = mainform.enctype;
   let target = mainform.target;
   switch(tag.id)
@@ -126,10 +136,41 @@ function selectedFileToUpload(tag)
     }break;
   }
 }
+
 function userOptionChanged(option)
 {
   console.log(option.value);
-  //perform logout
-  //or
-  //perform open saved files
+  if(option.value == 'Logout')
+  {
+    console.log('logging out');
+    mainform.action = "logout";
+    mainform.submit();
+  } 
+  if(option.value == 'Saved Codes')
+  {
+    console.log('opening files');
+    let target = mainform.target;
+    mainform.target = "_blank";
+    mainform.action = "savedCodes";
+    mainform.submit();
+    mainform.target = target;
+ }
+  option.value = userName;
 }
+
+window.addEventListener('load', function(){
+  mainform = document.getElementById("mainform");
+
+  let user = document.getElementById('user');
+  if(user) userName = user.value;
+
+  notification = document.getElementById('notification');
+  if(notification.innerText != "null")
+  {
+    console.log(notification.innerText);
+    notification.style.display = "flex";
+    setTimeout(function(){
+      notification.style.display = "none";    
+    },1500);
+  }
+});
