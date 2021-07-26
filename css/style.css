@@ -11,6 +11,21 @@ body
     /*background: linear-gradient(40deg, tomato, brown);*/
      background:#1D2632; 
 }
+body::-webkit-scrollbar{
+    width:  0.5rem;
+    height:  0.5rem;
+    /*background: black;*/
+}
+body::-webkit-scrollbar-thumb {
+    background: rgb(20,20,20);
+    border-radius: 2rem;
+}
+body::-webkit-scrollbar-track {
+    background:#1D2632; 
+}
+body::-webkit-scrollbar-corner {
+    background:#1D2632; 
+}
 header
 {
     display: flex;
@@ -156,6 +171,22 @@ textarea,.textarea
     font-size: 1.3rem;
     font-family: monospace;
     cursor: context-menu;
+    resize: none;
+}
+textarea::-webkit-scrollbar{
+    width:  0.5rem;
+    height:  0.5rem;
+    /*background: black;*/
+}
+textarea::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 1rem;
+}
+textarea::-webkit-scrollbar-track {
+    background-color: rgb(20, 20, 20); 
+}
+textarea::-webkit-scrollbar-corner {
+    background-color: rgb(20, 20, 20); 
 }
 .lines
 {

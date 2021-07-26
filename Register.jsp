@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="style.css"/> -->
-    <link rel="stylesheet" href="LoginAndRegister.css"/>
-    <script  type="text/javascript" src="LoginAndRegister.js"></script>
+    <link rel="stylesheet" href="./css/LoginAndRegister.css"/>
+    <script  type="text/javascript" src="./js/LoginAndRegister.js"></script>
     <script src="https://kit.fontawesome.com/26f93dc270.js" crossorigin="anonymous"></script>
   </head>
   <body>
