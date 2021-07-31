@@ -28,8 +28,8 @@
                 }
                 %>
                 <table class="loginTable" id="loginTable">
-                    <tr><td>Username : </td><td><input type="text" name="userName"></td></tr>
-                    <tr><td>Password : </td><td><input type="password" name="password"></td></tr>
+                    <tr><td>Username&nbsp;&nbsp;&nbsp;</td><td><input type="text" name="userName"></td></tr>
+                    <tr><td>Password&nbsp;&nbsp;&nbsp;</td><td><input type="password" name="password"></td></tr>
                     <th colspan="2"><button type="submit">Login</th>
                 </table>
             </main>

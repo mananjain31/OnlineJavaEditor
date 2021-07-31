@@ -188,7 +188,7 @@ textarea::-webkit-scrollbar-track {
 textarea::-webkit-scrollbar-corner {
     background-color: rgb(20, 20, 20); 
 }
-.lines
+/*.lines
 {
     background-color: rgb(30, 30, 30);
     color: tomato;
@@ -205,7 +205,7 @@ textarea::-webkit-scrollbar-corner {
 .line
 {
     color: inherit;
-}
+}*/
 textarea::placeholder
 {
     color: rgb(100, 100, 100);

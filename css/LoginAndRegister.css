@@ -1,0 +1,97 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    outline: none;
+    /*box-sizing: border-box;*/
+}
+body
+{
+    min-height: 100vh;
+    /*background: linear-gradient(40deg, tomato, brown);*/
+     background:#1D2632; 
+     display: flex;
+     justify-content: center;
+     color: white;
+}
+body::-webkit-scrollbar{
+    width:  0.5rem;
+    height:  0.5rem;
+    /*background: black;*/
+}
+body::-webkit-scrollbar-thumb {
+    background: rgb(20,20,20);
+    border-radius: 2rem;
+}
+body::-webkit-scrollbar-track {
+    background:#1D2632; 
+}
+body::-webkit-scrollbar-corner {
+    background:#1D2632; 
+}
+header
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+h1
+{
+    color: white;
+    margin:auto;
+    font-size: 3rem;
+    font-family: 'Girassol', cursive;
+}
+h2
+{
+    color: white;
+    margin:auto;
+    font-size: 2rem;
+    font-family: cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer, button
+{
+
+    color: white;
+    margin:auto;
+    font-size: 1.5rem;
+    font-family: cursive;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;	*/
+}
+main
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+table
+{
+    background-color: rgb(20, 20, 20);
+    color: white;
+    font-weight: bold;
+    padding: 4rem;
+    margin: 3rem auto;
+    border: 0.1rem solid white;
+    border-radius: 0.3rem;  
+    font-size: 1.3rem;
+    font-family: monospace;
+    cursor: context-menu;
+    resize: none;
+}
+
+input, button
+{
+    font-size: 1rem;
+    font-weight: bold;
+    background: white;
+    border: none;
+    color: rgb(97, 97, 138);
+    margin: 1rem auto;
+    padding: 0.2rem 0.5rem;
+}

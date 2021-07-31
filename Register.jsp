@@ -21,9 +21,9 @@
         </header>
             <main>
                 <table class="register" id="register">
-                    <tr><td>Username : </td><td><input type="text" name="userName"></td></tr>
-                    <tr><td>Password : </td><td><input type="password" name="password"></td></tr>
-                    <tr><td>Contact No. : </td><td><input type="text" name="contactNumber"></td></tr>
+                    <tr><td>Username&nbsp;&nbsp;</td><td><input type="text" name="userName"></td></tr>
+                    <tr><td>Password&nbsp;&nbsp;</td><td><input type="password" name="password"></td></tr>
+                    <tr><td>Contact No.&nbsp;&nbsp;</td><td><input type="text" name="contactNumber"></td></tr>
                     <th colspan="2"><button type="submit">Register</th>
                 </table>
             </main>
