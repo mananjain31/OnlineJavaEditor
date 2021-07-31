@@ -5,6 +5,10 @@
     outline: none;
     /*box-sizing: border-box;*/
 }
+html
+{
+      font-size: 18px;
+}
 body
 {
     min-height: 100vh;
@@ -28,6 +32,25 @@ body::-webkit-scrollbar-track {
 }
 body::-webkit-scrollbar-corner {
     background:#1D2632; 
+}
+.breadcrumbs
+{
+    position: absolute;   
+    font-size: 1.3rem;
+    font-family: monospace;
+    left: 0.5rem;
+    top: 0.5rem;
+    color: white;
+}
+@media only screen and (max-width : 800px){
+    .breadcrumbs{
+        position: relative;
+    }
+}
+.breadcrumbs a
+{
+    /*text-decoration: none;*/
+    color: white;
 }
 header
 {
@@ -62,11 +85,12 @@ footer, button
     font-family: cursive;
     display: flex;
     align-items: center;
-    /*justify-content: center;	*/
+    justify-content: space-between;	
 }
 main
 {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
@@ -84,7 +108,10 @@ table
     cursor: context-menu;
     resize: none;
 }
-
+caption
+{
+    margin-bottom: 1rem;
+}
 input, button
 {
     font-size: 1rem;
@@ -92,6 +119,26 @@ input, button
     background: white;
     border: none;
     color: rgb(97, 97, 138);
-    margin: 1rem auto;
-    padding: 0.2rem 0.5rem;
+    margin: 1rem 0;
+    /*padding: 0.4rem 0.5rem;*/
+    /*padding: 2px 5px;*/
+}
+input
+{
+    padding: 0.3rem 0.4rem;
+}
+button
+{
+    padding: 0.4rem 0.5rem;
+}
+table button
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.savedCodesTable td
+{
+    padding: 0 3rem;
 }

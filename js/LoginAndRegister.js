@@ -21,9 +21,18 @@ function switchPage()
 	mainform.submit();
 	hideAgain();
 }
+function gotoHome(e) 
+{
+	e.preventDefault();
+	unhideNone();
+	let mainform = document.getElementById("mainform");
+	mainform.action = "main.jsp";
+	mainform.submit();
+	hideAgain();
+}
 window.addEventListener('load', ()=>{
-	console.log('loaded');
 	switchButton = document.getElementById('switchPage');
-	console.log(switchButton);
 	switchButton.addEventListener('click', switchPage);
+	homeLink = document.getElementById('home-link');
+	homeLink.addEventListener('click', gotoHome);
 });

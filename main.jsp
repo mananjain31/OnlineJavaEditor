@@ -10,6 +10,13 @@
   code = (String)request.getAttribute("code");
   inputText = (String)request.getAttribute("inputText");
   currFile  = (String)request.getAttribute("currFile");
+  if(currFile == null && code == null)
+  {
+    outputText = (String)request.getParameter("outputText");
+    code = (String)request.getParameter("code");
+    inputText = (String)request.getParameter("inputText");
+    currFile  = (String)request.getParameter("currFile");
+  }
   //temporary code ends
   session = request.getSession(false);
   if(session != null) userName = (String) session.getAttribute("userName");

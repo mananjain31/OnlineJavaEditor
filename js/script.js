@@ -158,6 +158,17 @@ function userOptionChanged(option)
   option.value = userName;
 }
 
+function maintainDotJava()
+{
+  let i =currFile.value.indexOf('.');
+  if(i<0){
+    currFile.value += ".java";
+  }
+  else{
+    currFile.value = currFile.value.substring(0,i) + ".java";
+  }
+}
+
 window.addEventListener('load', function(){
   mainform = document.getElementById("mainform");
 
@@ -173,4 +184,7 @@ window.addEventListener('load', function(){
       notification.style.display = "none";    
     },1500);
   }
+
+  currFile = document.getElementById('currFile');
+  currFile.addEventListener('change',maintainDotJava);
 });

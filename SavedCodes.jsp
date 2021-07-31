@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="style.css"/> -->
-    <!-- <link rel="stylesheet" href="LoginAndRegister.css"/> -->
+    <link rel="stylesheet" href="./css/secondaryPages.css"/>
     <!-- <script  type="text/javascript" src="LoginAndRegister.js"></script> -->
     <script src="https://kit.fontawesome.com/26f93dc270.js" crossorigin="anonymous"></script>
 
@@ -53,29 +53,42 @@
   </head>
   <body>
     <form method="post" id="mainform">
+        <div class="breadcrumbs">
+            <a href="main.jsp"  id="home-link">IDE</a> > Saved Codes
+        </div>
         <header>
             <h1>Online Java IDE</h1>            
             <h2>Saved Codes of <%=userName%></h2>
         </header>
             <main>
+
                 <table class="savedCodesTable" id="savedCodesTable">
                 <%
+                    if(savedCodes.size() == 0)
+                    {
+                    %>
+                        <tr><th>No Saved code found</th></tr>
+                    <%
+                    }
+                    else
+                    {
                     for(String codeFileName : savedCodes)
                     {
                 %>
                     <tr>
-                        <th><%=codeFileName%></th>
-                        <th><input type="button" onclick="openCode('<%=codeFileName%>')" value="Open"></th>
-                        <th><input type="button" onclick="removeCode('<%=codeFileName%>')" value="Remove"></th>
+                        <td><%=codeFileName%></td>
+                        <td><input type="button" onclick="openCode('<%=codeFileName%>')" value="Open"></td>
+                        <td><input type="button" onclick="removeCode('<%=codeFileName%>')" value="Remove"></td>
                     </tr>
                 <%
+                    }
                     }
                 %>
                 </table>
             </main>
-            <footer>
+  <!--           <footer>
                 Back to Home : <a href="main.jsp">Home</a>
-            </footer>
+            </footer> -->
         </div>
         <input type="text" id="codeFileName" name="codeFileName" style="display:none">
     </form>
