@@ -10,15 +10,19 @@ public class Execute extends HttpServlet
 	 String executionPath = ".\\webapps\\OnlineJavaIDE\\IDE_Codes\\";
 	 File executionFolder = new File(executionPath);
 	 File inputFile = new File(executionPath+"inputFile.txt");
+	 File outputFile = new File(executionPath+"outputFile.txt");
 	 File codeFile = new File(executionPath+"Code.java");
 	 FileWriter fw;
 	 HttpSession session;
 	 String inputText,code,currClass,currFile,outputText;
 	 String varArgs[];
 
+	 PrintWriter out;
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		PrintWriter out = response.getWriter();
+		this.out = out;
 		inputText = request.getParameter("inputText");
 		code = request.getParameter("code");
 		currFile = request.getParameter("currFile");
@@ -29,11 +33,13 @@ public class Execute extends HttpServlet
 		try
 		{
 		writeFiles(); // this will write into Input.java and Code.java
-		outputText = getOutput();
+		// outputText = getOutput();
+		generateOutput();
 
 		deleteClassFiles();
 
-		request.setAttribute("outputText", outputText);
+		FileInputStream outputFileInputStream = new FileInputStream(outputFile);
+		request.setAttribute("outputFileInputStream", outputFileInputStream);
 		request.setAttribute("inputText", inputText);
 		request.setAttribute("code", code);
 		request.setAttribute("currFile", currFile);
@@ -69,35 +75,59 @@ public class Execute extends HttpServlet
 		return true;
 	}
 
-	 public String getOutput()throws Exception
+	public void generateOutput()throws Exception
 	{
-		String output = null;
+		OutputStream outputFileOutputStream = new FileOutputStream(outputFile);
 
 		Process p = Runtime.getRuntime().exec("javac --release 8 Code.java",null, executionFolder);
 		p.waitFor();
 		if (p.exitValue() != 0) 
 		{
+			/*
 			StringBuilder op = printLines(p.getErrorStream());
 			output = (op.toString()).trim();
+			*/
+			appendOutput(p.getErrorStream(), outputFileOutputStream);
 		} 
 		else 
 		{
 			p = Runtime.getRuntime().exec("java inputTaker",null, executionFolder);
 			p.waitFor();
+			/*
 			StringBuilder op = printLines(p.getInputStream());
 			output = op.toString().trim();
+			*/
+			appendOutput(p.getInputStream(), outputFileOutputStream);
 			if(p.exitValue()!=0)
 			{
-				StringBuilder exception = printLines(p.getErrorStream());
-				output += "\n"+exception; 
+				// StringBuilder exception = printLines(p.getErrorStream());
+				appendOutput(p.getErrorStream(), outputFileOutputStream);
 			}
 		}
-
-		return output;
+		outputFileOutputStream.close();
 	}
 
+	public void appendOutput(InputStream is, OutputStream os)throws Exception
+	{
+		int size = 1024;
+		byte buffer[] = new byte[size];
+		int recieved = 0;
+		while(true)
+		{
+			recieved = is.read(buffer, 0, size);
+			if(recieved <= 0) break;
+			else if(recieved < size)
+			{
+				size = recieved;
+			}
+			// out.write(buffer.toString());
+			os.write(buffer, 0, size);
+			os.flush();	
+		}
+	}
 
-	 public StringBuilder printLines(InputStream is/*, JspWriter out*/) throws Exception 
+/*
+	public StringBuilder printLines(InputStream is) throws Exception 
 	{
 		StringBuilder lines = new StringBuilder();
 		Scanner sc = new Scanner(is);
@@ -107,7 +137,7 @@ public class Execute extends HttpServlet
 		return lines;
 	}
 
-
+*/
 
 	public  void deleteClassFiles()
 	{

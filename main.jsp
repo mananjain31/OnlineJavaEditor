@@ -1,18 +1,39 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
-<%@page import="model.*"%>
 <%!
     String currFile,code,inputText,outputText,userName,userId;
+
+    boolean writeOutput(HttpServletRequest request, JspWriter out)
+    {
+        try
+        {
+            FileInputStream outputFileInputStream = (FileInputStream)request.getAttribute("outputFileInputStream");
+            if(outputFileInputStream == null) return false;
+            InputStreamReader isr = new InputStreamReader(outputFileInputStream);
+            int recieved = isr.read();
+            while(isr.ready() && recieved != -1)
+            {
+                out.print((char)recieved);
+                recieved = isr.read();
+            }
+            isr.close();
+        }
+        catch(Exception e)
+        {
+            try{
+                out.println(e);
+            }catch(Exception ee){}
+        }
+        return true;
+    }
 %>
 <%
   //temporary code
-  outputText = (String)request.getAttribute("outputText");
   code = (String)request.getAttribute("code");
   inputText = (String)request.getAttribute("inputText");
   currFile  = (String)request.getAttribute("currFile");
   if(currFile == null && code == null)
   {
-    outputText = (String)request.getParameter("outputText");
     code = (String)request.getParameter("code");
     inputText = (String)request.getParameter("inputText");
     currFile  = (String)request.getParameter("currFile");
@@ -27,11 +48,12 @@
   if(currFile == null) currFile = "MyCode.java";
   if(code==null) code = "class MyCode\n"+"{\n"+"public static void main(String...args)\n"+"{\n"+"System.out.println(\"Hey There Coder\");\n"+"}\n"+"}\n";
   if(inputText == null) inputText = "";
-  if(outputText == null) outputText = "";
   // userName = "manan";
 %>
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css"/>
@@ -100,7 +122,7 @@
                 <a onclick="copyText('output')"><i class="fas fa-copy"></i></a>
                 <a onclick="downloadFile('output')"><i class="fas fa-download"></i></a>
             </div>
-          <textarea name="outputText" id="outputText" class="op" placeholder="Output Will Be Displayed Here" readonly wrap="off" spellcheck="false"><%=outputText%></textarea>
+          <textarea name="outputText" id="outputText" class="op" placeholder="Output Will Be Displayed Here" readonly wrap="off" spellcheck="false"><%  writeOutput(request, out);%></textarea>
         </div>
       </div>
     <!-- Hidden inputs resides here -->
