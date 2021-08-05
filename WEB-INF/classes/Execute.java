@@ -48,7 +48,7 @@ public class Execute extends HttpServlet
 		}
 		catch(Exception e)
 		{
-			out.println(e);
+			e.printStackTrace(out);
 		}
 	}
 
@@ -80,29 +80,27 @@ public class Execute extends HttpServlet
 		OutputStream outputFileOutputStream = new FileOutputStream(outputFile);
 
 		Process p = Runtime.getRuntime().exec("javac --release 8 Code.java",null, executionFolder);
-		p.waitFor();
-		if (p.exitValue() != 0) 
-		{
 			/*
 			StringBuilder op = printLines(p.getErrorStream());
 			output = (op.toString()).trim();
 			*/
-			appendOutput(p.getErrorStream(), outputFileOutputStream);
-		} 
-		else 
+		appendOutput(p.getErrorStream(), outputFileOutputStream);
+		// appendOutput(p.getInputStream(), outputFileOutputStream);
+		p.getInputStream().close();
+		p.waitFor();
+		if(p.exitValue() == 0) 
 		{
+			outputFileOutputStream.close();
+			outputFileOutputStream = new FileOutputStream(outputFile);
 			p = Runtime.getRuntime().exec("java inputTaker",null, executionFolder);
-			p.waitFor();
 			/*
 			StringBuilder op = printLines(p.getInputStream());
 			output = op.toString().trim();
 			*/
 			appendOutput(p.getInputStream(), outputFileOutputStream);
-			if(p.exitValue()!=0)
-			{
-				// StringBuilder exception = printLines(p.getErrorStream());
-				appendOutput(p.getErrorStream(), outputFileOutputStream);
-			}
+			// StringBuilder exception = printLines(p.getErrorStream());
+			appendOutput(p.getErrorStream(), outputFileOutputStream);
+			p.waitFor();
 		}
 		outputFileOutputStream.close();
 	}
