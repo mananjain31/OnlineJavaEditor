@@ -1,1 +1,1 @@
-# OnlineJavaIDE
+# OnlineJavaEditor

@@ -54,10 +54,10 @@
   <body>
     <form method="post" id="mainform">
         <div class="breadcrumbs">
-            <a href="main.jsp"  id="home-link">IDE</a> > Saved Codes
+            <a href="main.jsp"  id="home-link">Editor</a> > Saved Codes
         </div>
         <header>
-            <h1>Online Java IDE</h1>            
+            <h1>Online Java Editor</h1>            
             <h2>Saved Codes of <%=userName%></h2>
         </header>
             <main>

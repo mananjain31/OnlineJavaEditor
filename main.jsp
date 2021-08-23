@@ -63,7 +63,7 @@
   <body>
     <form action="index.jsp" method="post" id="mainform">
         <header>
-            <h1>Online Java IDE</h1>
+            <h1>Online Java Editor</h1>
             <nav>
                 <div class="currFileDiv" value="" name="files">
                     <input type="text" name="currFile" id="currFile" class="currFile" value="<%=currFile%>">

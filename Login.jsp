@@ -16,10 +16,10 @@
   <body>
     <form action="login" method="post" id="mainform">
         <div class="breadcrumbs">
-            <a href="main.jsp" id="home-link">IDE</a> > Login
+            <a href="main.jsp" id="home-link">Editor</a> > Login
         </div>
         <header>
-            <h1>Online Java IDE</h1>            
+            <h1>Online Java Editor</h1>            
             <h2>Login Page</h2>
         </header>
             <main>
