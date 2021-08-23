@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Execute extends HttpServlet
 {
-	 String executionPath = ".\\webapps\\OnlineJavaIDE\\IDE_Codes\\";
+	 String executionPath = ".\\webapps\\OnlineJavaEditor\\Editor_Codes\\";
 	 File executionFolder = new File(executionPath);
 	 File inputFile = new File(executionPath+"inputFile.txt");
 	 File outputFile = new File(executionPath+"outputFile.txt");
