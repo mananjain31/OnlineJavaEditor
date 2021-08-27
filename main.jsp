@@ -11,7 +11,7 @@
             if(outputFileInputStream == null) return false;
             InputStreamReader isr = new InputStreamReader(outputFileInputStream);
             int recieved = isr.read();
-            while(isr.ready() && recieved != -1)
+            while(recieved != -1)
             {
                 out.print((char)recieved);
                 recieved = isr.read();
@@ -122,7 +122,7 @@
                 <a onclick="copyText('output')"><i class="fas fa-copy"></i></a>
                 <a onclick="downloadFile('output')"><i class="fas fa-download"></i></a>
             </div>
-          <textarea name="outputText" id="outputText" class="op" placeholder="Output Will Be Displayed Here" readonly wrap="off" spellcheck="false"><%  writeOutput(request, out);%></textarea>
+          <textarea name="outputText" id="outputText" class="op" placeholder="Output Will Be Displayed Here" readonly wrap="off" spellcheck="false"><%writeOutput(request, out);%></textarea>
         </div>
       </div>
     <!-- Hidden inputs resides here -->
