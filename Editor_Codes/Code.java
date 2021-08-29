@@ -2,13 +2,7 @@ class MyCode
 {
 public static void main(String...args)
 {
-
-if(true)
-{
-int i=2077;
-System.out.printf("Hello");
-}
-
+System.out.println("Hey There Coder");
 }
 }
 

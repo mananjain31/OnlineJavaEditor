@@ -109,6 +109,7 @@
       <div class="ide">
         <div class="code-container">
             <textarea name="code" class="code" id="code" spellcheck="false" wrap="off" ><%=code%></textarea>
+            <div class="line-number" id="line-number">Line-0/0</div>
         </div>
         <div class="ipop">
             <div class="ioNav">

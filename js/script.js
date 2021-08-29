@@ -169,6 +169,17 @@ function maintainDotJava()
   }
 }
 
+
+function showLineNumber(e)
+{
+  let lineNumber = document.getElementById("line-number");
+  let code = document.getElementById("code");
+  let currLine = code.value.substring(0,code.selectionStart).split("\n").length;
+  let totalLines = code.value.split("\n").length;
+  lineNumber.innerText = "Line:"+currLine+"/"+totalLines;
+  console.log("line : "+currLine+"/"+totalLines);
+}
+
 window.addEventListener('load', function(){
   mainform = document.getElementById("mainform");
 
@@ -187,4 +198,12 @@ window.addEventListener('load', function(){
 
   currFile = document.getElementById('currFile');
   currFile.addEventListener('change',maintainDotJava);
+
+  let code = document.getElementById("code");
+  showLineNumber();
+  code.onclick = showLineNumber;
+  code.onchange = showLineNumber;
+  code.onkeypress = showLineNumber;
+  code.onkeydown = showLineNumber;
+  code.onkeyup = showLineNumber;
 });
