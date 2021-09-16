@@ -82,7 +82,7 @@
                 <div class="code-interactions">
                     <input type="button" value="New" name="New" class="btn" id="New" onclick="newF()">
                     <!-- <input type="button" value="Upload" name="Upload" class="btn Upload" id="Upload" onclick="newF()"> -->
-                    <input type="button" value="Execute" name="submitB" class="btn execute" onclick="execute()">
+                    <input type="button" value="Execute" name="submitB" class="btn execute" onclick="execute(this)">
                     <%
                     if(userName == null)
                     {
@@ -123,7 +123,8 @@
                 <a onclick="copyText('output')"><i class="fas fa-copy"></i></a>
                 <a onclick="downloadFile('output')"><i class="fas fa-download"></i></a>
             </div>
-          <textarea name="outputText" id="outputText" class="op" placeholder="Output Will Be Displayed Here" readonly wrap="off" spellcheck="false"><%writeOutput(request, out);%></textarea>
+          <textarea name="outputText" id="outputText" class="op" placeholder="Output Will Be Displayed Here" readonly wrap="off" spellcheck="false"><%-- writeOutput(request, out); --%>
+          </textarea>
         </div>
       </div>
     <!-- Hidden inputs resides here -->

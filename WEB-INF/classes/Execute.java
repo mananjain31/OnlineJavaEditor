@@ -21,34 +21,33 @@ public class Execute extends HttpServlet
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
-		PrintWriter out = response.getWriter();
-		this.out = out;
 		inputText = request.getParameter("inputText");
 		code = request.getParameter("code");
 		currFile = request.getParameter("currFile");
 		String[] s = currFile.split(".java");
 		currClass = s[0];
 		varArgs = null;
-		
+		ServletOutputStream sos = response.getOutputStream();
 		try
 		{
-		writeFiles(); // this will write into Input.java and Code.java
-		// outputText = getOutput();
-		generateOutput();
+			writeFiles(); // this will write into Input.java and Code.java
+			// outputText = getOutput();
+			generateOutput();
 
-		deleteClassFiles();
+			deleteClassFiles();
 
-		FileInputStream outputFileInputStream = new FileInputStream(outputFile);
-		request.setAttribute("outputFileInputStream", outputFileInputStream);
-		request.setAttribute("inputText", inputText);
-		request.setAttribute("code", code);
-		request.setAttribute("currFile", currFile);
-		RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
-		rd.forward(request, response);
+			FileInputStream outputFileInputStream = new FileInputStream(outputFile);
+			request.setAttribute("outputFileInputStream", outputFileInputStream);
+			// request.setAttribute("inputText", inputText);
+			// request.setAttribute("code", code);
+			// request.setAttribute("currFile", currFile);
+			// RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
+			// rd.forward(request, response);
+			appendOutput(outputFileInputStream, sos);
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace(out);
+			e.printStackTrace();
 		}
 	}
 

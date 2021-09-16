@@ -1,11 +1,31 @@
 function onloadFunction()
 {}
-function execute()
+function loading(action,btn)
 {
-  var mainform = document.getElementById("mainform");
-  mainform.action = "execute";
-  mainform.target = "";
-  mainform.submit();
+  if(action == 1) btn.style.opacity=0.5;
+  if(action == 0) btn.style.opacity=1;
+}
+function execute(btn)
+{
+  let outputText = document.getElementById("outputText");
+  let inputText = document.getElementById("inputText");
+  let code = document.getElementById("code");
+  let currFile = document.getElementById("currFile");
+  let xmlHttpRequest = new XMLHttpRequest();
+  let dataString = "inputText="+encodeURIComponent(inputText.value)
+  + "&code="+encodeURIComponent(code.value)
+  + "&currFile="+encodeURIComponent(currFile.value);
+  console.log(dataString);
+  xmlHttpRequest.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+      loading(0,btn);
+      outputText.value = this.responseText;
+    }
+  }
+  xmlHttpRequest.open("POST", "execute");
+  xmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xmlHttpRequest.send(dataString);
+  loading(1,btn);
 }
 function login()
 {

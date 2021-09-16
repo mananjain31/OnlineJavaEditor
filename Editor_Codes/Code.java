@@ -1,8 +1,10 @@
+import java.util.*;
 class MyCode
 {
 public static void main(String...args)
 {
-System.out.println("Hey There Coder");
+Scanner sc = new Scanner(System.in);
+System.out.println("Hey There " + sc.next());
 }
 }
 
