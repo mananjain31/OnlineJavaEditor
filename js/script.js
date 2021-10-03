@@ -22,7 +22,7 @@ function execute(btn)
       outputText.value = this.responseText;
     }
   }
-  xmlHttpRequest.open("POST", "execute");
+  xmlHttpRequest.open("POST", "execute", true); // true written so that the request will be send Asynchronouslly
   xmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xmlHttpRequest.send(dataString);
   loading(1,btn);
@@ -52,8 +52,10 @@ function newF()
 {
   let mainform = document.getElementById("mainform");
   mainform.action = "index.jsp";
+  let target = mainform.target;
   mainform.target = "_blank";
   mainform.submit();
+  mainform.target = target;
 }
 function copyText(text)
 {
