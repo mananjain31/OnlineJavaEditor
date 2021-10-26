@@ -224,10 +224,7 @@ function indent(e)
     {
       let c = code[i];
       if(c == '{') stack.push(c);
-      else if(c == `'` || c == `"` ) 
-      {
-        i = code.indexOf(c, i+1);
-      }
+      else if(c == `'` || c == `"` ) i = code.indexOf(c, i+1);
       else if(c == '}') 
       {
         stack2 = [];
