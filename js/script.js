@@ -39,6 +39,7 @@ function saveFile()
   mainform.action="saveFile";
   mainform.submit();
 }
+/*
 function resetF( )
 {
   if(confirm("All Changes will be Lost!"))
@@ -48,6 +49,7 @@ function resetF( )
     document.getElementsByClassName("code")[0].value="class MyCode\n{\npublic static void main(String...args)\n{\nSystem.out.println(\"Hey There Coder\");\n}\n}";
   }
 }
+*/
 function newF()
 {
   let mainform = document.getElementById("mainform");
@@ -199,7 +201,61 @@ function showLineNumber(e)
   let currLine = code.value.substring(0,code.selectionStart).split("\n").length;
   let totalLines = code.value.split("\n").length;
   lineNumber.innerText = "Line:"+currLine+"/"+totalLines;
-  console.log("line : "+currLine+"/"+totalLines);
+}
+
+function indent(e)
+{
+  const tabspace = "  ";
+  let code = e.currentTarget.value;
+  let codeEle = e.target;
+  let ss = codeEle.selectionStart;
+  if(e.key == "Tab") 
+  {
+    e.preventDefault();
+    codeEle.value = code.substring(0,ss) + "  " + code.substring(ss);
+    codeEle.selectionStart = codeEle.selectionEnd = ss+2;
+  }
+  if(e.key == "Enter") 
+  {
+    e.preventDefault();
+    let stack = [];
+    let stack2 = [];
+    for(let i=0;i<code.substring(0,ss).length;i++)
+    {
+      let c = code[i];
+      if(c == '{') stack.push(c);
+      else if(c == `'` || c == `"` ) 
+      {
+        i = code.indexOf(c, i+1);
+      }
+      else if(c == '}') 
+      {
+        stack2 = [];
+        while(stack.length != 0)
+        {
+          let cc = stack.pop();
+          console.log(cc);
+          if(cc == '{') break;
+          stack2.push(cc);
+        }
+        while(stack2.length != 0) stack.push(stack2.pop());
+      }
+    }
+    // console.log(stack);
+    console.log("Final " ,stack)
+    let indentation = stack.reduce((acc,i)=>(acc+tabspace),"\n");
+    if(code[ss]=='}') 
+    {
+      stack.pop();
+      let secondaryIndendation = stack.reduce((acc,i)=>(acc+tabspace),"\n");
+      codeEle.value = code.substring(0,ss) + indentation + secondaryIndendation + code.substring(ss);
+    }
+    else
+    {
+      codeEle.value = code.substring(0,ss) + indentation + code.substring(ss);
+    }
+    codeEle.selectionStart = codeEle.selectionEnd = ss+indentation.length;
+  }
 }
 
 window.addEventListener('load', function(){
@@ -223,9 +279,12 @@ window.addEventListener('load', function(){
 
   let code = document.getElementById("code");
   showLineNumber();
-  code.onclick = showLineNumber;
-  code.onchange = showLineNumber;
-  code.onkeypress = showLineNumber;
-  code.onkeydown = showLineNumber;
-  code.onkeyup = showLineNumber;
+  code.addEventListener('change', showLineNumber);
+  code.addEventListener('keypress', showLineNumber);
+  code.addEventListener('keydown', showLineNumber);
+  code.addEventListener('keyup', showLineNumber);
+  code.addEventListener('click', showLineNumber);
+
+  code.addEventListener('keydown', indent);
+
 });
