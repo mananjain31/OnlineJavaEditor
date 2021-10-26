@@ -46,7 +46,7 @@
   if(userName == null) userName = null;
   if(userName == null) userId = null;
   if(currFile == null) currFile = "MyCode.java";
-  if(code==null) code = "class MyCode\n"+"{\n"+"public static void main(String...args)\n"+"{\n"+"System.out.println(\"Hey There Coder\");\n"+"}\n"+"}\n";
+  if(code==null) code = "class MyCode\n"+"{\n"+"  public static void main(String...args)\n"+"  {\n"+"    System.out.println(\"Hey There Coder\");\n"+"  }\n"+"}\n";
   if(inputText == null) inputText = "";
   // userName = "manan";
 %>
