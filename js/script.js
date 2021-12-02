@@ -209,6 +209,12 @@ function indent(e)
   let code = e.currentTarget.value;
   let codeEle = e.target;
   let ss = codeEle.selectionStart;
+  if(e.ctrlKey && e.key=='Enter') 
+  {
+    const submit = document.querySelector("input.btn.execute");
+    submit.click();
+    return;
+  }
   if(e.key == "Tab") 
   {
     e.preventDefault();
