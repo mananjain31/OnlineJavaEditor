@@ -210,12 +210,21 @@ textarea::-webkit-scrollbar-track {
 textarea::-webkit-scrollbar-corner {
     background-color: rgb(20, 20, 20); 
 }
+i:hover,
+input[type='button']:hover, 
+button:hover
+{
+    cursor: pointer;
+}
+textarea:hover{
+    cursor: text;
+}
 /*.lines
 {
     background-color: rgb(30, 30, 30);
     color: tomato;
     font-weight: bold;
-    padding: 0.4rem;
+    padding: 0.4rem;/
     border: 0.1rem solid white;
     border-right: none;
     border-radius: 0.3rem;  
