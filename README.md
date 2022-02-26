@@ -11,3 +11,9 @@ later use.
 
 - Users can upload and download code files and input files from their
 local device
+
+## Contributing
+Pull requests are welcome.\
+For major changes or further queries,\
+please Contact: \
+[Manan Jain](https://github.com/mananjain31) 
