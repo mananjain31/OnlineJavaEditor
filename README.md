@@ -12,6 +12,8 @@ later use.
 - Users can upload and download code files and input files from their
 local device
 
+- Whole project is developed from scratch without the use of external js or css libraries.
+
 ## Contributing
 Pull requests are welcome.\
 For major changes or further queries,\
